@@ -41,7 +41,7 @@ from datetime import datetime, tzinfo, timedelta
 from random import random
 import cbor
 from cbor.cbor import CBOR_ARRAY
-from .crc import crc16_x25, crc32
+from .crc import crc16_x25, crc32_c
 
 
 __all__ = [
@@ -299,7 +299,7 @@ class PrimaryBlock(object):
                 binary.append(b'\x44\x00\x00\x00\x00')
                 binary = b''.join(binary)
 
-                crc = crc32(binary)
+                crc = crc32_c(binary)
                 primary_block.append(struct.pack('!I', crc))
             else:
                 binary.append(b'\x42\x00\x00')
@@ -338,15 +338,10 @@ class CanonicalBlock(object):
 
         serialized_data = self.serialize_data()
 
-        # Block data length
-        # If the value can be expressed in one byte, we have to ensure
-        # that we do not return 0 as block length. Therefore max(1, ...)
-        block.append(max(1, len(cbor.dumps(serialized_data))))
-
         # Block-specific data
         block.append(serialized_data)
 
-        assert len(block) == 6, "Block must contain 6 items"
+        assert len(block) == 5, "Block must contain 5 items"
         # CRC
         if self.crc_type != CRCType.NONE:
             if self.crc_type == CRCType.CRC32:
@@ -360,7 +355,7 @@ class CanonicalBlock(object):
             ) + empty_crc
 
             if self.crc_type == CRCType.CRC32:
-                crc = crc32(binary)
+                crc = crc32_c(binary)
                 # unsigned long in network byte order
                 block.append(struct.pack('!I', crc))
             else:
