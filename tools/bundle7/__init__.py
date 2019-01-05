@@ -350,7 +350,7 @@ class CanonicalBlock(object):
             else:
                 empty_crc = b'\x42\x00\x00'
 
-            binary = struct.pack('B', 0x80 | 7) + b''.join(
+            binary = struct.pack('B', 0x80 | 6) + b''.join(
                 [cbor.dumps(item) for item in block]
             ) + empty_crc
 
