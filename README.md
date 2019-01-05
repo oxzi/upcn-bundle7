@@ -7,6 +7,14 @@ Marius Feldmann (IMF)][marius-feldmann]. The original code was based on the
 [10th version of the Bundle Protocol Version 7][dtn-bpbis-10].
 
 
+## Usage
+
+```bash
+# Make sure to have Python3 and the cbor module installed.
+python3 -m tools.bundle7
+```
+
+
 ## Changes
 
 ### Version 10 → Version 11
