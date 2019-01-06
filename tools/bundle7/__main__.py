@@ -3,9 +3,7 @@ from . import *
 
 primary_block = PrimaryBlock(
     bundle_proc_flags=BundleProcFlag.MUST_NOT_BE_FRAGMENTED
-        | BundleProcFlag.CONTAINS_MANIFEST
-        | BundleProcFlag.REPORT_DELIVERY
-        | BundleProcFlag.REPORT_STATUS_TIME,
+        | BundleProcFlag.CONTAINS_MANIFEST,
     destination="dtn:GS2",
     source="dtn:none",
     report_to="dtn:none",
