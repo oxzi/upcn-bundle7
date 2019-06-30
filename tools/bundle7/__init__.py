@@ -371,7 +371,7 @@ class PayloadBlock(CanonicalBlock):
     def __init__(self, data, **kwargs):
         super().__init__(BlockType.PAYLOAD,
                          data,
-                         block_number=0,
+                         block_number=1,
                          **kwargs)
 
 
@@ -477,7 +477,7 @@ class Bundle(object):
         return self.primary_block.has_flag(BundleProcFlag.IS_FRAGMENT)
 
     def add(self, new_block):
-        num = 0
+        num = 1
 
         for block in self.blocks:
             message = "Block {} number already assigned".format(block.block_number)
