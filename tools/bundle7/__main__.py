@@ -2,8 +2,7 @@ from datetime import timedelta
 from . import *
 
 primary_block = PrimaryBlock(
-    bundle_proc_flags=BundleProcFlag.MUST_NOT_BE_FRAGMENTED
-        | BundleProcFlag.CONTAINS_MANIFEST,
+    bundle_proc_flags=BundleProcFlag.MUST_NOT_BE_FRAGMENTED,
     destination="dtn:GS2",
     source="dtn:none",
     report_to="dtn:none",

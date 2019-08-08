@@ -75,7 +75,6 @@ class BundleProcFlag(IntFlag):
     MUST_NOT_BE_FRAGMENTED     = 0x0004
     ACKNOWLEDGEMENT_REQUESTED  = 0x0020
     REPORT_STATUS_TIME         = 0x0040
-    CONTAINS_MANIFEST          = 0x0080
     REPORT_RECEPTION           = 0x0100
     REPORT_FORWARDING          = 0x0400
     REPORT_DELIVERY            = 0x0800
