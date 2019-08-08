@@ -242,6 +242,9 @@ class PrimaryBlock(object):
                        creation_time=None,
                        fragment_offset=None,
                        lifetime=24 * 60 * 60):
+        if crc_type == CRCType.NONE:
+            raise ValueError("PrimaryBlock requires a CRC value")
+
         self.version = 7
         self.bundle_proc_flags = bundle_proc_flags
         self.crc_type = crc_type
